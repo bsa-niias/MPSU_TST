@@ -1,0 +1,56 @@
+        .CSECT  PUSK
+        .TITLE  PUSK
+
+        .GLOBL  MAIN,ENDPRO,FINISH,TIMER,NOADR
+
+PUSK::  MTPS    #600
+        CLR     R0
+1$:     CLR     (R0)+
+        CMP     #476,R0
+        BGE     1$
+        MOV     #VECTOR,R0
+        MOV     #15,R2
+2$:     MOV     (R0)+,R1
+        MOV     (R0)+,(R1)+
+        MOV     (R0)+,(R1)
+        SOB     R2,2$
+
+        CLR     SUMPRO
+        CLR     SUMPAM
+        CLR     R5
+        CLR     R0
+3$:     MOV     (R0)+,R4
+        XOR     R4,R5
+        CMP     R0,#ENDPRO       ;ÇõóàëãÖçàÖ äéçíê.ëìååõ íÖäëíÄ èêéÉê.
+        BLO     3$
+        MOV     R5,SUMPRO
+
+        CLR     R5
+        MOV     #PUSK,R0
+4$:     MOV     (R0)+,R4         ;ÇõóàëãÖçàÖ äéçíê.ëìååõ íÖäëíÄ ÅÑ
+        XOR     R4,R5
+        CMP     R0,#FINISH
+        BLOS    4$
+        MOV     R5,SUMPAM
+
+        HALT
+        JMP     MAIN
+
+SUMPRO::.WORD   0
+SUMPAM::.WORD   0
+
+VECTOR::.WORD   0,137,MAIN
+        .WORD   4,NOADR,0
+        .WORD   10,12,0
+        .WORD   14,16,0
+        .WORD   20,22,0
+        .WORD   24,MAIN,340
+        .WORD   30,TIMER,340
+        .WORD   34,36,0
+        .WORD   60,62,0
+        .WORD   64,66,0
+        .WORD   100,102,6
+VPUS7:: .WORD   110,112,0
+VPUS11::.WORD   400,402,0     ;114,116,0
+
+         .END

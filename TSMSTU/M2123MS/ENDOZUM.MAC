@@ -1,0 +1,7 @@
+        .CSECT  ENDOZU
+        .TITLE  ENDOZU
+
+FINISH::.WORD   0
+
+ENDOZU==.
+        .END

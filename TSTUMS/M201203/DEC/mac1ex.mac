@@ -1,0 +1,72 @@
+        .TITLE  MAC1EX
+        .ENABL  LC
+        .ASECT
+        .=1000
+
+;............................
+; primer kommentariq
+;............................
+
+;............................
+; na~alo programmy
+;............................
+MAC1EX: MOV     #MAC1EX,SP
+        MTPS    #340
+
+; wywod nazwaniq programmy
+        MOV     #TITLE,R1
+        CALL    PRIN
+
+; ostanow programmy
+QUIT:   HALT                ; ostanow
+        BR      MAC1EX
+
+;----------------------------
+; wywod stroki
+PRIN:   MOVB    (R1)+,R4
+        TSTB    R4
+        BEQ     101$
+        CMPB    R4,#200
+        BEQ     105$
+        CALL    C34
+        BCS     104$
+        BR      PRIN
+101$:   MOVB    #15,R4
+        CALL    C34
+        BCS     104$
+        MOVB    #12,R4
+        CALL    C34
+        BCS     104$
+105$:   CLC
+        RETURN
+104$:   SEC
+        RETURN
+
+;----------------------------
+; ~tenie s klawiatury
+C33:    TSTB    @#177560    ; podprogramma wwoda simwola
+        BPL     C33
+        MOVB    @#177562,R4
+        BIC     #177600,R4
+        RETURN
+
+;----------------------------
+; zapisx na displej
+C34:    MOV     #1000,R3
+103$:   DEC     R3
+        BEQ     106$
+        TSTB    @#177564
+        BPL     103$
+        MOVB    R4,@#177566
+        CLC
+        RETURN
+106$:   SEC
+        RETURN
+
+
+;----------------------------
+; soob}eniq
+TITLE:  .ASCIZ<15><12><16>/pRIMER PROGRAMMY NA MAKROASSEMBLERE (WERSIQ 1.0)/<17>
+        .EVEN
+
+        .END    MAC1EX

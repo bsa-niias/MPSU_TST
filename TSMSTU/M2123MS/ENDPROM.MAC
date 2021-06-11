@@ -1,0 +1,6 @@
+        .CSECT  ENDPRO
+        .TITLE  ENDPRO
+
+ENDPRO::.WORD   0
+
+        .END

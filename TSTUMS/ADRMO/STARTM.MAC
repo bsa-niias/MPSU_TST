@@ -1,0 +1,454 @@
+        .CSECT  START
+        .TITLE  START
+        .ENABL  LC
+        .ENABL  AMA
+
+;       ‚›‚Ž„ € Š€ ‘“™…‘’‚“ž™ˆ• €„…‘Ž‚ ŒŽ„“‹…‰ Š€Š€‘€ Œ‘“
+
+MAIN::  MTPS    #600
+        MOV     #143346,SP
+        EMT     0               ;‘Ž‘ ’€‰Œ…€
+        EMT     0
+
+        MOV     #TUMS,R2
+        CALL    STROKA
+
+        MOV     #SM251,R2
+        CALL    STROKA
+        MOV     #M251,R3
+        CLR     R5
+        MOV     #3,CH
+3$:     MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     1$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      2$
+
+1$:     MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+        CMP     R5,CH         ;Ž 8 €„…‘Ž‚ ‚ ‘’ŽŠ…
+        BLE     2$
+        MOV     #PSVK,R2
+        CALL    STROKA
+        CLR     R5
+2$:     TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BEQ     4$
+        TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     3$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        BR      3$
+        
+4$:     MOV     #SM201,R2
+        CALL    STROKA
+        MOV     #M2011,R3
+        CLR     R5
+        MOV     #3,CH
+7$:     MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     5$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      6$
+
+5$:     MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+6$:     TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     8$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        
+8$:     TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BNE     7$
+        
+        TST     R5
+        BEQ     37$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+37$:    MOV     #SM236,R2
+        CALL    STROKA
+        MOV     #M236,R3
+        CLR     R5
+        MOV     #7.,CH
+11$:    MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     9$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      10$
+
+9$:     MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+        CMP     R5,CH         ;Ž 8 €„…‘Ž‚ ‚ ‘’ŽŠ…
+        BLE     10$
+        MOV     #PSVK,R2
+        CALL    STROKA
+        CLR     R5
+10$:    TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BEQ     12$     
+        TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     11$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        BR      11$
+
+12$:    TST     R5
+        BEQ     38$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+38$:    MOV     #SM203,R2
+        CALL    STROKA
+        MOV     #M2031,R3
+        CLR     R5
+        MOV     #3,CH
+15$:    MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     13$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      14$
+
+13$:    MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+14$:    TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     16$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        
+16$:    TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BNE     15$
+
+        TST     R5
+        BEQ     39$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+39$:    MOV     #SM201,R2
+        CALL    STROKA
+        MOV     #M2012,R3
+        CLR     R5
+        MOV     #3,CH
+19$:    MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     17$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      18$
+
+17$:    MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+18$:    TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     20$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        
+20$:    TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BNE     19$
+
+        TST     R5
+        BEQ     40$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+40$:    MOV     #SM201,R2
+        CALL    STROKA
+        MOV     #M2013,R3
+        CLR     R5
+        MOV     #3,CH
+23$:    MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     21$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      22$
+
+21$:    MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+22$:    TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     24$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        
+24$:    TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BNE     23$
+
+        TST     R5
+        BEQ     41$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+41$:    MOV     #SM203,R2
+        CALL    STROKA
+        MOV     #M2032,R3
+        CLR     R5
+        MOV     #3,CH
+27$:    MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     25$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      26$
+
+25$:    MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+26$:    TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     28$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        
+28$:    TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BNE     27$
+
+        TST     R5
+        BEQ     42$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+42$:    MOV     #SM203,R2
+        CALL    STROKA
+        MOV     #M2033,R3
+        CLR     R5
+        MOV     #3,CH
+31$:    MOV     (R3),R1     ;‘—ˆ’€’œ €„…‘
+        CLR     R0
+        MOV     (R1),R2     ;…‘’œ €„…‘?
+        TST     R0
+        BNE     29$
+        MOV     R1,R2       ;…‘’œ
+        MOV     R3,-(SP)
+        CALL    SCREEN      ;‚›‚…‘’ˆ €„…‘ € Š€      
+        MOV     (SP)+,R3        
+        BR      30$
+
+29$:    MOV     #STARS,R2   ;…’
+        CALL    STROKA
+        INC     R5
+30$:    TST     R5          ;Ž‚€Ÿ ‘’ŽŠ€?
+        BNE     32$
+        MOV     #PROBEL,R2
+        CALL    STROKA
+        
+32$:    TST     (R3)+       ;‘‹…„.€„…‘    
+        TST     (R3)
+        BNE     31$
+
+        TST     R5
+        BEQ     44$
+        MOV     #PSVK,R2
+        CALL    STROKA
+
+44$:    MOV     #SYS,R2
+        CALL    STROKA
+        CLR     R5            ;Ž‚…Š€ ‘ˆ‘’…ŒŽ‰ Ž‹€‘’ˆ
+        MOV     #177600,R1
+45$:    CLR     R0
+        MOV     (R1),R2
+        TST     R0
+        BNE     46$
+        CALL    WHO
+46$:    CMP     #177676,R1
+        BEQ     43$
+        TST     (R1)+
+        BR      45$
+
+43$:    TST     R5
+        BEQ     47$
+        MOV     #PSVK,R2
+        CALL    STROKA
+47$:    MOV     #NLO,R2
+        CALL    STROKA
+        CLR     R5            ;Ž‚…Š€ € ‹ˆ˜ˆ… €„…‘€
+        MOV     #160000,R1
+33$:    CLR     R0
+        MOV     (R1),R2
+        TST     R0
+        BNE     35$
+
+        CMP     #177600,R1     ;‘ˆ‘’…Œ€Ÿ Ž‹€‘’œ
+        BHI     36$            ;€ŒŸ’ˆ
+        CMP     R1,#177676
+        BHI     36$
+        BR      35$
+
+36$:    CALL    WHO
+
+        EMT     0               ;‘Ž‘ ’€‰Œ…€
+        EMT     0
+
+35$:    CMP     #177776,R1
+        BEQ     34$
+        TST     (R1)+
+        BR      33$
+
+34$:    MOV     #ENDTUM,R2
+        CALL    STROKA
+        HALT
+
+
+;       Ž…„…‹…ˆ… ˆ€„‹…†Ž‘’ˆ €„…‘€
+
+;       ‚•Ž„: R1 - €„…‘
+
+WHO::   MOV     #MEM,R2
+3$:     MOV     (R2)+,R0        
+        
+2$:     CMP     (R0),R1
+        BNE     1$
+        RETURN
+        
+1$:     TST     (R0)+
+        TST     (R0)
+        BNE     2$
+
+        TST     (R2)
+        BNE     3$
+        MOV     R1,R2
+        MOV     #10.,CH
+        CALL    SCREEN        
+        RETURN
+        
+
+MEM::   .WORD   M251,M2011,M236,M2031,M2012,M2013,M2032,M2033,0 
+
+;       ‚›‚Ž„ €„…‘€ € Š€
+
+;       ‚•Ž„: R2 - €„…‘
+
+SCREEN::CLR     R3
+        CLC
+        ROL     R2
+        ROL     R3
+        ADD     #60,R3
+1$:     TSTB    @#177564      ;‚›‚Ž„ ‘’€˜…ƒŽ ‘ˆŒ‚Ž‹€ €„…‘€
+        BPL     1$
+        MOVB    R3,@#177566
+
+        MOV     #5,R4
+3$:     CLR     R3
+        CLC
+        ROL     R2
+        ROL     R3
+        ROL     R2
+        ROL     R3
+        ROL     R2
+        ROL     R3
+        ADD     #60,R3
+2$:     TSTB    @#177564      ;‚›‚Ž„ Ž‘’€‹œ›• 5 ‘ˆŒ‚Ž‹Ž‚
+        BPL     2$
+        MOVB    R3,@#177566
+        SOB     R4,3$
+
+        MOV     #1,R4
+4$:     TSTB    @#177564
+        BPL     4$
+        MOVB    #40,@#177566  ;‚›‚Ž„ Ž…‹€
+        SOB     R4,4$
+
+        INC     R5
+        CMP     R5,CH         ;Ž 8 €„…‘Ž‚ ‚ ‘’ŽŠ…
+        BLE     6$
+7$:     TSTB    @#177564
+        BPL     7$
+        MOVB    #12,@#177566  ;‘
+8$:     TSTB    @#177564
+        BPL     8$
+        MOVB    #15,@#177566  ;‚Š 
+        CLR     R5
+6$:     RETURN
+
+;      ‚›‚Ž„ ‘’ŽŠˆ ‘ˆŒ‚Ž‹Ž‚
+;      ‚•Ž„: R2 - €„…‘ ‘’ŽŠˆ
+
+STROKA::
+1$:     TSTB    @#177564
+        BPL     1$
+        MOVB    (R2)+,@#177566
+        TSTB    (R2)
+        BNE     1$
+        RETURN   
+
+
+;      …‘‹ˆ €„…‘€ …’ - …›‚€ˆ… Ž Ž˜ˆŠ… Ž€™…ˆŸ Š Š€€‹“
+
+NOADR:: MOV     #77,R0
+        RTT
+
+TIMER:: RTT
+
+TUMS::  .ASCIZ  <12><15>/TUMS ADRESS/
+ENDTUM::.ASCIZ  <12><15>/THE END/<12><15>
+
+SYS::   .ASCIZ  /SYS/<12><15>
+NLO::   .ASCIZ  /NLO/<12><15>
+SM251:: .ASCIZ  <12><15>/M251:/<40>
+SM236:: .ASCIZ  /M236:/<40>
+SM201:: .ASCIZ  /M201:/<40>
+SM203:: .ASCIZ  /M203:/<40>
+STARS:: .ASCIZ  /******/<40>
+        .BYTE   0
+PROBEL::.ASCIZ  /      /
+PSVK::  .ASCIZ  <12><15><15>
+
+M251::  .WORD   176560,176562,176564,176566,177560,177562,177564,177566,0
+
+M236::  .WORD   167700,167702,167704,167706,167710,167712,167714,167716
+        .WORD   167720,167722,167724,167726,167730,167732,167734,167736
+        .WORD   167740,167742,167744,167746,167750,167752,167754,167756
+        .WORD   167760,167762,167764,167766,167770,167772,167774,167776,0
+
+M2011:: .WORD   161140,161142,0
+M2012:: .WORD   161124,161126,0
+M2013:: .WORD   161130,161132,0
+
+M2031:: .WORD   161224,161226,0
+M2032:: .WORD   161230,161232,0
+M2033:: .WORD   161234,161236,0
+
+CH::    .WORD   0
+
+        .END
