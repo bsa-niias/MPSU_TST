@@ -234,12 +234,8 @@ SCREEN::MOV     R3,-(SP)
         INC     R5
         CMP     R5,CH         ;èé 8 ÄÑêÖëéÇ Ç ëíêéäÖ
         BLE     6$
-7$:     TSTB    @#177564
-        BPL     7$
-        MOVB    #12,@#177566  ;èë
-8$:     TSTB    @#177564
-        BPL     8$
-        MOVB    #15,@#177566  ;Çä 
+        MOV     #PSVK,R2
+        CALL    STROKA
         CLR     R5
 6$:     MOV     (SP)+,R4
         MOV     (SP)+,R3

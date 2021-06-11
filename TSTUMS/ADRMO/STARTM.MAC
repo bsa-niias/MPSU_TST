@@ -390,14 +390,10 @@ SCREEN::CLR     R3
         SOB     R4,4$
 
         INC     R5
-        CMP     R5,CH         ;èé 8 ÄÑêÖëéÇ Ç ëíêéäÖ
+        CMP     R5,CH         ;èé CH ÄÑêÖëéÇ Ç ëíêéäÖ
         BLE     6$
-7$:     TSTB    @#177564
-        BPL     7$
-        MOVB    #12,@#177566  ;èë
-8$:     TSTB    @#177564
-        BPL     8$
-        MOVB    #15,@#177566  ;Çä 
+        MOV     #PSVK,R2
+        CALL    STROKA
         CLR     R5
 6$:     RETURN
 
@@ -420,7 +416,7 @@ NOADR:: MOV     #77,R0
 
 TIMER:: RTT
 
-TUMS::  .ASCIZ  <12><15>/TUMS ADRESS/
+TUMS::  .ASCIZ  <12><15>/TUMS ADDRESS/
 ENDTUM::.ASCIZ  <12><15>/THE END/<12><15>
 
 SYS::   .ASCIZ  /SYS/<12><15>
@@ -430,10 +426,10 @@ SM236:: .ASCIZ  /M236:/<40>
 SM201:: .ASCIZ  /M201:/<40>
 SM203:: .ASCIZ  /M203:/<40>
 STARS:: .ASCIZ  /******/<40>
-        .BYTE   0
+        .EVEN
 PROBEL::.ASCIZ  /      /
-PSVK::  .ASCIZ  <12><15><15>
-
+PSVK::  .ASCIZ  <12><15>
+        .EVEN
 M251::  .WORD   176560,176562,176564,176566,177560,177562,177564,177566,0
 
 M236::  .WORD   167700,167702,167704,167706,167710,167712,167714,167716

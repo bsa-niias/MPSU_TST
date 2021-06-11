@@ -392,12 +392,8 @@ SCREEN::CLR     R3
         INC     R5
         CMP     R5,CH         ;èé 8 ÄÑêÖëéÇ Ç ëíêéäÖ
         BLE     6$
-7$:     TSTB    @#177564
-        BPL     7$
-        MOVB    #12,@#177566  ;èë
-8$:     TSTB    @#177564
-        BPL     8$
-        MOVB    #15,@#177566  ;Çä 
+        MOV     #PSVK,R2
+        CALL    STROKA
         CLR     R5
 6$:     RETURN
 
@@ -420,7 +416,7 @@ NOADR:: MOV     #77,R0
 
 TIMER:: RTT
 
-MSTU::  .ASCIZ  <12><15>/MSTU ADRESS/
+MSTU::  .ASCIZ  <12><15>/MSTU ADDRESS/
 ENDTUM::.ASCIZ  /THE END   /
 
 SYS::   .ASCIZ  /SYS/<12><15>
